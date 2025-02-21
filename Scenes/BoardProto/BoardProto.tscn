@@ -86,7 +86,7 @@ transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 
 gi_mode = 0
 mesh = SubResource("QuadMesh_lywtq")
 
-[node name="Players" type="Node" parent="."]
+[node name="Players" type="Node3D" parent="."]
 
 [node name="Player 1" type="MeshInstance3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 1, 0)
@@ -116,7 +116,7 @@ mesh = SubResource("BoxMesh_ghysp")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dvegc")
 
-[node name="Steps" type="Node" parent="."]
+[node name="Steps" type="Node3D" parent="."]
 
 [node name="Step 001" type="MeshInstance3D" parent="Steps"]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 0, 0.001, 0)
