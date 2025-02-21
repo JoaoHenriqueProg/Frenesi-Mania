@@ -58,6 +58,9 @@ func rotate_dice():
 func _process(delta: float) -> void:
 	global_delta = delta
 	
+	if Input.is_action_just_pressed("DEBUG 1"):
+		Globals.start_rand_minigame()
+	
 	if board_state == BoardState.WaitingPlayerJump:
 		rotate_dice()
 		if Input.is_action_just_pressed("jump"):

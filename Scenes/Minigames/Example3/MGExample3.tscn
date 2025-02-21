@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bgtqog1l27nlu"]
+
+[node name="MiniGame" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(6.92, 6.92)
+text = "mini game 3
+"

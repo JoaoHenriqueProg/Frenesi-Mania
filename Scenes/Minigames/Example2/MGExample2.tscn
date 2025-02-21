@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs86cvmncfq6u"]
+
+[sub_resource type="TextMesh" id="TextMesh_arnhr"]
+text = "mini game 2"
+
+[node name="MiniGame" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_arnhr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.18571)
+current = true
