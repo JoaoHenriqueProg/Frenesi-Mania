@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgki0qpday36o"
-path.s3tc="res://.godot/imported/Dice_dice.png-42cc311c4970b8ae15e378a01651b55c.s3tc.ctex"
+path.s3tc="res://.godot/imported/Dice_Dice.png-9dd27b1442ee759a39157a0e45d05026.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "20a14901e0bc56e40c0b54850830e673"
+"md5": "51b7c9dd42c8b9411214c1bafa9f4268"
 }
 
 [deps]
 
-source_file="res://Scenes/BoardProto/Dice_dice.png"
-dest_files=["res://.godot/imported/Dice_dice.png-42cc311c4970b8ae15e378a01651b55c.s3tc.ctex"]
+source_file="res://Scenes/BoardProto/Dice_Dice.png"
+dest_files=["res://.godot/imported/Dice_Dice.png-9dd27b1442ee759a39157a0e45d05026.s3tc.ctex"]
 
 [params]
 

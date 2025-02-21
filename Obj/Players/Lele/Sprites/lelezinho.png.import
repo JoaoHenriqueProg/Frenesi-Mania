@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xd2ikubk0e7y"
-path="res://.godot/imported/mefrenesimania.png-ed4659e32e8f1f158ad37f37f1bd5c44.ctex"
+uid="uid://cra1uvf8nl2mm"
+path="res://.godot/imported/lelezinho.png-44d270f35c57487a6b9aac1ecd9694c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Obj/Players/Lele/Sprites/mefrenesimania.png"
-dest_files=["res://.godot/imported/mefrenesimania.png-ed4659e32e8f1f158ad37f37f1bd5c44.ctex"]
+source_file="res://Obj/Players/Lele/Sprites/lelezinho.png"
+dest_files=["res://.godot/imported/lelezinho.png-44d270f35c57487a6b9aac1ecd9694c7.ctex"]
 
 [params]
 

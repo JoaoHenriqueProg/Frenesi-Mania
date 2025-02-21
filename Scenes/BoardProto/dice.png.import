@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3r35dgvplgs4"
-path.s3tc="res://.godot/imported/dice.png-86180f02f6d33fa39dbefcecf982328d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Dice.png-4a4c01f21031af94d864c8b861282798.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/BoardProto/dice.png"
-dest_files=["res://.godot/imported/dice.png-86180f02f6d33fa39dbefcecf982328d.s3tc.ctex"]
+source_file="res://Scenes/BoardProto/Dice.png"
+dest_files=["res://.godot/imported/Dice.png-4a4c01f21031af94d864c8b861282798.s3tc.ctex"]
 
 [params]
 
