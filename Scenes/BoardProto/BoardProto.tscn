@@ -1,0 +1,239 @@
+[gd_scene load_steps=15 format=3 uid="uid://diudj0larf8no"]
+
+[ext_resource type="Script" path="res://Scenes/BoardProto/BoardProto.gd" id="1_67sv3"]
+[ext_resource type="PackedScene" uid="uid://c8yt315v5ejpy" path="res://Scenes/BoardProto/Dice.glb" id="2_wn4t7"]
+[ext_resource type="Texture2D" uid="uid://iahbiiwo3tft" path="res://Scenes/BoardProto/Step.png" id="3_olr5s"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lywtq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ghysp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8tpo"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld3qw"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hqe1"]
+albedo_color = Color(0.984314, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvegc"]
+albedo_color = Color(0.615686, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htie0"]
+transparency = 1
+albedo_texture = ExtResource("3_olr5s")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bugr6"]
+
+[sub_resource type="Animation" id="Animation_rupuw"]
+resource_name = "Player1Jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Players/Player 1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 2, 0), Vector3(0, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [1],
+"method": &"change_state"
+}, {
+"args": [2],
+"method": &"change_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fds3j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Players/Player 1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uu8rp"]
+_data = {
+"Player1Jump": SubResource("Animation_rupuw"),
+"RESET": SubResource("Animation_fds3j")
+}
+
+[node name="MainGame" type="Node3D"]
+script = ExtResource("1_67sv3")
+
+[node name="Tabalero" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+gi_mode = 0
+mesh = SubResource("QuadMesh_lywtq")
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player 1" type="MeshInstance3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 1, 0)
+mesh = SubResource("BoxMesh_ghysp")
+skeleton = NodePath("../Tabalero")
+surface_material_override/0 = SubResource("StandardMaterial3D_g8tpo")
+
+[node name="Camera3D" type="Camera3D" parent="Players/Player 1"]
+transform = Transform3D(1, 0, 0, 0, -0.381199, 0.924493, 0, -0.462247, -0.1906, 0, 11.0681, -3.76315)
+
+[node name="Player 2" type="MeshInstance3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 2, 1, 0)
+mesh = SubResource("BoxMesh_ghysp")
+skeleton = NodePath("../Tabalero")
+surface_material_override/0 = SubResource("StandardMaterial3D_ld3qw")
+
+[node name="Player 3" type="MeshInstance3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 4, 1, 0)
+mesh = SubResource("BoxMesh_ghysp")
+skeleton = NodePath("../Tabalero")
+surface_material_override/0 = SubResource("StandardMaterial3D_4hqe1")
+
+[node name="Player 4" type="MeshInstance3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 6, 1, 0)
+mesh = SubResource("BoxMesh_ghysp")
+skeleton = NodePath("../Tabalero")
+surface_material_override/0 = SubResource("StandardMaterial3D_dvegc")
+
+[node name="Steps" type="Node" parent="."]
+
+[node name="Step 001" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 0, 0.001, 0)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 002" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 10.4281, 0.000999523, -4.9393)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 003" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 23.2066, 0.000999046, -14.9797)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 004" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 32.2155, 0.000999046, -4.83095)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 005" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 26.6139, 0.000999046, 9.64087)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 006" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 16.4683, 0.000999046, 26.3313)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 007" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 3.07998, 0.000999046, 38.3899)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 008" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -10.6107, 0.000999046, 39.2496)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 009" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -26.402, 0.000999046, 35.1346)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 010" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -35.3884, 0.000999046, 43.4524)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 011" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -50.5774, 0.000999046, 41.0108)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 012" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -67.7296, 0.000999046, 24.8925)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 013" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -78.4596, 0.000999046, 8.10218)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 014" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -74.5252, 0.000999046, -6.3417)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 015" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -58.3847, 0.000999046, -9.70351)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 016" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -40.587, 0.000999046, -5.17545)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 017" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -23.1827, 0.000999046, 2.67272)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Step 018" type="MeshInstance3D" parent="Steps"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, -12.0508, 0.026053, 1.36854)
+material_override = SubResource("StandardMaterial3D_htie0")
+mesh = SubResource("QuadMesh_bugr6")
+skeleton = NodePath("../..")
+
+[node name="Dado" parent="." instance=ExtResource("2_wn4t7")]
+transform = Transform3D(2.18557e-08, 0.5, -4.37114e-08, 0.5, -2.18557e-08, 0, -1.91069e-15, -4.37114e-08, -0.5, 0, 3.5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.916586, -0.160209, -0.366337, 0.399838, 0.367262, 0.839791, 1.08038e-08, -0.916216, 0.400685, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uu8rp")
+}
