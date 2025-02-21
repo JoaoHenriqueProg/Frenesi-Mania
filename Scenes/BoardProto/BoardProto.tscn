@@ -1,6 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://diudj0larf8no"]
 
 [ext_resource type="Script" path="res://Scenes/BoardProto/BoardProto.gd" id="1_67sv3"]
+[ext_resource type="PackedScene" uid="uid://bmwuark7fedu8" path="res://Obj/Players/Lele/Models/lele.gltf" id="2_gy066"]
 [ext_resource type="Texture2D" uid="uid://iahbiiwo3tft" path="res://Scenes/BoardProto/Step.png" id="3_olr5s"]
 [ext_resource type="PackedScene" uid="uid://cn7fl47mw6gvg" path="res://Scenes/BoardProto/Dice.glb" id="3_tcstq"]
 
@@ -10,9 +11,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8tpo"]
 albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld3qw"]
-albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hqe1"]
 albedo_color = Color(0.984314, 1, 0, 1)
@@ -101,9 +99,10 @@ transform = Transform3D(1, 0, 0, 0, -0.381199, 0.924493, 0, -0.462247, -0.1906, 
 
 [node name="Player 2" type="MeshInstance3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 2, 1, 0)
-mesh = SubResource("BoxMesh_ghysp")
 skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ld3qw")
+
+[node name="blockbench_export" parent="Players/Player 2" instance=ExtResource("2_gy066")]
+transform = Transform3D(5, 0, 0, 0, -1.4569e-07, 5, 0, -3.333, -2.18557e-07, 0.0164862, 4.24875e-08, 0.486)
 
 [node name="Player 3" type="MeshInstance3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 4, 1, 0)
