@@ -22,7 +22,8 @@ func _process(delta: float) -> void:
 var minigames = [
 	preload("res://Scenes/Minigames/Example1/MGExample1.tscn"),
 	preload("res://Scenes/Minigames/Example2/MGExample2.tscn"),
-	preload("res://Scenes/Minigames/Example3/MGExample3.tscn")
+	preload("res://Scenes/Minigames/Example3/MGExample3.tscn"),
+	preload("res://Scenes/Minigames/Minigolf/MGMinigolf.tscn")
 ]
 
 func start_rand_minigame():
