@@ -1,11 +1,13 @@
 extends RigidBody3D
 
 
-@export var max_spd : int = 15
-@export var acc : int = 10
+@export var max_spd : int = 8
+@export var acc : int = 5
 
 @onready var scaler = $Scaler
 @onready var cam_3d = $"../Camera3D"
+@onready var anim = $"../blockbench_export/Node/AnimationPlayer"
+@onready var objcolidido = $"../blockbench_export/Node/obj_goal"
 
 var selected : bool = false
 var velocity : Vector3
@@ -16,7 +18,15 @@ var dir : Vector3
 func _ready() -> void:
 	scaler.set_as_top_level(true)
 
-
+func _physics_process(delta):
+	var collision = move_and_collide(velocity * delta)  # Move e verifica colisão
+	
+	if collision:
+		var collider = collision.get_collider()  # Obtém o objeto colidido
+		
+		if collider == objcolidido:  # Só ativa se for o obj_goal
+			print("Colidiu com obj_goal: ", collider.name)
+			anim.play("gol")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
