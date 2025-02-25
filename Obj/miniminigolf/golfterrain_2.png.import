@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cra1uvf8nl2mm"
-path.s3tc="res://.godot/imported/lelezinho.png-44d270f35c57487a6b9aac1ecd9694c7.s3tc.ctex"
+uid="uid://dd6gwp3r8t2tc"
+path.s3tc="res://.godot/imported/golfterrain_2.png-34f21365d545184410cbfcaf86848ed1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "40af07834e0b26d04e3b88151b8101ba"
+}
 
 [deps]
 
-source_file="res://Obj/Players/Lele/Sprites/lelezinho.png"
-dest_files=["res://.godot/imported/lelezinho.png-44d270f35c57487a6b9aac1ecd9694c7.s3tc.ctex"]
+source_file="res://Obj/miniminigolf/golfterrain_2.png"
+dest_files=["res://.godot/imported/golfterrain_2.png-34f21365d545184410cbfcaf86848ed1.s3tc.ctex"]
 
 [params]
 
