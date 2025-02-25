@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 2, 1, 
 skeleton = NodePath("../../..")
 
 [node name="blockbench_export" parent="Players/Player 2" instance=ExtResource("2_gy066")]
-transform = Transform3D(5, 0, 0, 0, -1.4569e-07, 5, 0, -3.333, -2.18557e-07, 0.0164862, 4.24875e-08, 0.486)
+transform = Transform3D(-5, -2.9138e-07, -2.18557e-07, 2.18557e-07, 6.36831e-15, -5, 4.37114e-07, -3.333, 9.55343e-15, 0.0164862, 4.24875e-08, 0.486)
 
 [node name="Player 3" type="MeshInstance3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 4, 1, 0)

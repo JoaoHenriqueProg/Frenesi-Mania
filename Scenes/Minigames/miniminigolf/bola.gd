@@ -6,8 +6,9 @@ extends RigidBody3D
 
 @onready var scaler = $Scaler
 @onready var cam_3d = $"../Camera3D"
-@onready var anim = $"../blockbench_export/Node/AnimationPlayer"
-@onready var objcolidido = $"../blockbench_export/Node/obj_goal"
+@onready var anim = $"../blockbench_export2/Node/AnimationPlayer"
+@onready var objcolidido = $"../blockbench_export2/Node/obj_goal"
+#@onready var smesh = $meshbolinha
 
 var selected : bool = false
 var velocity : Vector3
@@ -19,12 +20,12 @@ func _ready() -> void:
 	scaler.set_as_top_level(true)
 
 func _physics_process(delta):
-	var collision = move_and_collide(velocity * delta)  # Move e verifica colisão
+	var collision = move_and_collide(velocity * delta)  
 	
 	if collision:
-		var collider = collision.get_collider()  # Obtém o objeto colidido
+		var collider = collision.get_collider()  
 		
-		if collider == objcolidido:  # Só ativa se for o obj_goal
+		if collider == objcolidido: 
 			print("Colidiu com obj_goal: ", collider.name)
 			anim.play("gol")
 
@@ -37,8 +38,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("left_mb"):
 		selected = true
+		acc = 0
+		#update_smesh_color()
 		print("aperta")
-	
+	else: acc = 5
 	if Input.is_action_just_released("left_mb"):
 		print("soltar")
 		if selected:
@@ -46,6 +49,9 @@ func _process(delta: float) -> void:
 			print(spd)
 			shoot(spd)
 		selected = false
+	
+	
+	
 	
 
 
@@ -72,3 +78,10 @@ func pull_metter() -> void:
 			scaler.scale.z = clamp(distance,0,2)
 		else:
 			scaler.scale.z = 0.01
+
+
+#func update_smesh_color() -> void:
+	#var material = smesh.get_active_material(0)
+	#var red_intensity = clamp(distance / 5, 0, 1)  
+			#
+	#material.albedo_color = material.albedo_color.lerp(Color(1, 0, 0), 0.1)
