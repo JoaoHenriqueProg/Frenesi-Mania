@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dnykx7c7a7ff4"
-path="res://.godot/imported/model_golf_terrain1.gltf-df78723878a1f03de90de2f560ac71a3.scn"
+path="res://.godot/imported/model_golf_terrain1.gltf-f5cd3e59afcf576dc7f61e7b1b846bd4.scn"
 
 [deps]
 
-source_file="res://Scenes/Minigames/miniminigolf/model_golf_terrain1.gltf"
-dest_files=["res://.godot/imported/model_golf_terrain1.gltf-df78723878a1f03de90de2f560ac71a3.scn"]
+source_file="res://Scenes/Minigames/Minigolf/model_golf_terrain1.gltf"
+dest_files=["res://.godot/imported/model_golf_terrain1.gltf-f5cd3e59afcf576dc7f61e7b1b846bd4.scn"]
 
 [params]
 

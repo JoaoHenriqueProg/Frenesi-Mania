@@ -9,6 +9,12 @@ enum BoardState {
 }
 var board_state = BoardState.WaitingPlayerJump
 
+var cur_player = 0
+var camera_offset
+
+func _ready() -> void:
+	camera_offset = $"Players/Player 1".position - $Camera3D.position
+
 func change_state(new_state):
 	board_state = new_state
 	
@@ -60,6 +66,8 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("DEBUG 1"):
 		Globals.start_rand_minigame()
+	
+	$Camera3D.position = get_node("Players").get_children()[cur_player].position - camera_offset
 	
 	if board_state == BoardState.WaitingPlayerJump:
 		rotate_dice()

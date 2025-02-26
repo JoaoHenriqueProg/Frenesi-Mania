@@ -86,6 +86,9 @@ transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 
 gi_mode = 0
 mesh = SubResource("QuadMesh_lywtq")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.924493, 0.381199, 0, -0.381199, 0.924493, 0, 8.5263, 11.0681)
+
 [node name="Players" type="Node3D" parent="."]
 
 [node name="Player 1" type="MeshInstance3D" parent="Players"]
@@ -93,9 +96,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 1, 
 mesh = SubResource("BoxMesh_ghysp")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_g8tpo")
-
-[node name="Camera3D" type="Camera3D" parent="Players/Player 1"]
-transform = Transform3D(1, 0, 0, 0, -0.381199, 0.924493, 0, -0.462247, -0.1906, 0, 11.0681, -3.76315)
 
 [node name="Player 2" type="MeshInstance3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 2, 1, 0)

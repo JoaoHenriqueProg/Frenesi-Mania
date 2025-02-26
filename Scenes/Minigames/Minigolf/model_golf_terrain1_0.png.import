@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvvqei4f5ctsf"
-path.s3tc="res://.godot/imported/model_golf_terrain1_0.png-f637661ebf0e666f32bc4ec64e98f35f.s3tc.ctex"
+path.s3tc="res://.godot/imported/model_golf_terrain1_0.png-f99603210d0146db8c6e071521fbb1d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Scenes/Minigames/miniminigolf/model_golf_terrain1_0.png"
-dest_files=["res://.godot/imported/model_golf_terrain1_0.png-f637661ebf0e666f32bc4ec64e98f35f.s3tc.ctex"]
+source_file="res://Scenes/Minigames/Minigolf/model_golf_terrain1_0.png"
+dest_files=["res://.godot/imported/model_golf_terrain1_0.png-f99603210d0146db8c6e071521fbb1d0.s3tc.ctex"]
 
 [params]
 
