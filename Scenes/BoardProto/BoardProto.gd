@@ -72,7 +72,13 @@ func _process(delta: float) -> void:
 	if board_state == BoardState.WaitingPlayerJump:
 		rotate_dice()
 		if Input.is_action_just_pressed("jump"):
-			$AnimationPlayer.play("Player1Jump")
+			get_node("Players").get_children()[cur_player].jump()
+			
+			# TODO: isso aqui é muito cagado
+			var timer1 = get_tree().create_timer(0.25)
+			timer1.connect("timeout", func (): change_state(BoardState.ChoseNumber))
+			var timer2 = get_tree().create_timer(0.5)
+			timer2.connect("timeout", func (): change_state(BoardState.PlayerWalkingToPos))
 	elif board_state == BoardState.PlayerWalkingToPos:
 		if !are_players_in_postion():
 			move_player_to_next_position(0)
