@@ -21,12 +21,11 @@ func change_state(new_state):
 	if new_state == BoardState.ChoseNumber:
 		var more_steps = rand_dice()
 		
-		# TODO: DINAMICAR PRA VARIOS PLAYERS
-		player_logic_positions[0] += more_steps
-		player_logic_positions[0] %= $Steps.get_child_count()
+		player_logic_positions[cur_player] += more_steps
+		player_logic_positions[cur_player] %= $Steps.get_child_count()
 
 func rand_dice() -> int:
-	var nums = [1,2,3,4,5,6]
+	var nums = [1, 2, 3, 4, 5, 6]
 	var rng = RandomNumberGenerator.new()
 	var num = nums[rng.randi() % nums.size()]
 	if num == 1:
@@ -81,7 +80,11 @@ func _process(delta: float) -> void:
 			timer2.connect("timeout", func (): change_state(BoardState.PlayerWalkingToPos))
 	elif board_state == BoardState.PlayerWalkingToPos:
 		if !are_players_in_postion():
-			move_player_to_next_position(0)
+			move_player_to_next_position(cur_player)
+		else:
+			cur_player += 1
+			cur_player %= 4
+			change_state(BoardState.WaitingPlayerJump)
 
 # ÁREA DA MOVIMENTACÃO
 
@@ -91,18 +94,21 @@ var player_cur_positions = [0, 0, 0, 0]
 func move_player_to_next_position(player):
 	var cur_player = $Players.get_children()[player]
 	var player_world_pos := Vector2(cur_player.global_position.x, cur_player.global_position.z)
-	var next_step_world_pos := Vector2($Steps.get_children()[player_cur_positions[player] + 1].global_position.x, 
-									   $Steps.get_children()[player_cur_positions[player] + 1].global_position.z)
+	var next_step = (player_cur_positions[player] + 1) % 18
+	var next_step_world_pos := Vector2($Steps.get_children()[next_step].global_position.x, 
+									   $Steps.get_children()[next_step].global_position.z)
 	
 	var adding = player_world_pos.direction_to(next_step_world_pos).normalized() * 7.5 * global_delta
 	
 	cur_player.position.x += adding.x
 	cur_player.position.z += adding.y
 	
-	if cur_player.position.distance_to($Steps.get_children()[player_cur_positions[player] + 1].position) < 1.5:
+	if cur_player.position.distance_to($Steps.get_children()[next_step].position) < 1.5:
 		# cur_player.position.x = $Steps.get_children()[player_cur_positions[player] + 1].position.x
 		# cur_player.position.z = $Steps.get_children()[player_cur_positions[player] + 1].position.z
 		player_cur_positions[player] += 1
+		print($Steps.get_child_count())
+		player_cur_positions[player] %= $Steps.get_child_count()
 
 func are_players_in_postion():
 	return player_cur_positions == player_logic_positions
