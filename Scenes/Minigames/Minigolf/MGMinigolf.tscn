@@ -1,10 +1,19 @@
 [gd_scene load_steps=30 format=4 uid="uid://bfmaw60apnsfp"]
 
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 [ext_resource type="Script" path="res://Scenes/Minigames/miniminigolf/camera_3d.gd" id="1_1qus3"]
 [ext_resource type="Script" path="res://Scenes/Minigames/miniminigolf/bola.gd" id="1_vhisk"]
 [ext_resource type="Texture2D" uid="uid://caxwqpr82glpy" path="res://Obj/miniminigolf/models/model_golf_terrain1_1.png" id="3_7ipvn"]
 [ext_resource type="Texture2D" uid="uid://couxcxbreu4wl" path="res://Obj/miniminigolf/models/model_golf_terrain1_2.png" id="4_mctg7"]
 [ext_resource type="Texture2D" uid="uid://7co0kgqxwio3" path="res://Obj/miniminigolf/models/model_golf_terrain1_0.png" id="5_r43ny"]
+=======
+[ext_resource type="Script" path="res://Scenes/Minigames/Minigolf/camera_3d.gd" id="1_to5xx"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Minigolf/bola.gd" id="2_icpd1"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Minigolf/pista.gd" id="3_veuyv"]
+[ext_resource type="Texture2D" uid="uid://bt1usycb5vyo4" path="res://Obj/miniminigolf/golfterrain_1.png" id="4_84jqc"]
+[ext_resource type="Texture2D" uid="uid://dd6gwp3r8t2tc" path="res://Obj/miniminigolf/golfterrain_2.png" id="5_i4rll"]
+[ext_resource type="Texture2D" uid="uid://ds61kh825q45c" path="res://Obj/miniminigolf/golfterrain_0.png" id="6_k74fi"]
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2xf2w"]
 friction = 0.5
@@ -36,7 +45,38 @@ fog_light_energy = 0.83
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ihf7w"]
 
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 [sub_resource type="Animation" id="Animation_p1vrb"]
+=======
+[sub_resource type="Animation" id="Animation_q2oa6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/pyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.719, 0.218, -4.219)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/pyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_yekhh"]
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 resource_name = "gol"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -66,7 +106,38 @@ tracks/0/keys = {
 "values": [Vector3(0.18125, 0.14244, 0.28125)]
 }
 
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_su8tk"]
+=======
+[sub_resource type="Animation" id="Animation_bw2rs"]
+resource_name = "t"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/pyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.719, 0.113, -4.219)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/pyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mmbg"]
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 _data = {
 "RESET": SubResource("Animation_v8kxx"),
 "gol": SubResource("Animation_p1vrb")
@@ -78,7 +149,11 @@ transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
 cull_mode = 2
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 albedo_texture = ExtResource("3_7ipvn")
+=======
+albedo_texture = ExtResource("4_84jqc")
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 texture_filter = 0
 texture_repeat = false
 
@@ -122,7 +197,11 @@ transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
 cull_mode = 2
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 albedo_texture = ExtResource("4_mctg7")
+=======
+albedo_texture = ExtResource("5_i4rll")
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 texture_filter = 0
 texture_repeat = false
 
@@ -164,7 +243,11 @@ transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
 cull_mode = 2
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 albedo_texture = ExtResource("5_r43ny")
+=======
+albedo_texture = ExtResource("6_k74fi")
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 texture_filter = 0
 texture_repeat = false
 
@@ -214,17 +297,21 @@ albedo_color = Color(1, 1, 1, 0)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_epg0h"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 [node name="miniminigolf1" type="Node3D"]
+=======
+[node name="MiniGame" type="Node3D"]
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.920471, 0.390811, 0, -0.390811, 0.920471, -0.0877455, 8.00657, 11.7096)
 current = true
-script = ExtResource("1_1qus3")
+script = ExtResource("1_to5xx")
 
 [node name="bola" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25369, 4.55101)
 physics_material_override = SubResource("PhysicsMaterial_2xf2w")
-script = ExtResource("1_vhisk")
+script = ExtResource("2_icpd1")
 
 [node name="colisor" type="CollisionShape3D" parent="bola"]
 shape = SubResource("SphereShape3D_pq21f")
@@ -254,7 +341,12 @@ shadow_enabled = true
 [node name="blockbench_export2" type="Node3D" parent="."]
 transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 0, -2.24652, 0)
 
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 [node name="Node" type="Node3D" parent="blockbench_export2"]
+=======
+[node name="Node" type="Node3D" parent="blockbench_export"]
+script = ExtResource("3_veuyv")
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="blockbench_export2/Node"]
 libraries = {
@@ -266,9 +358,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19375, 0.28125)
 mesh = SubResource("ArrayMesh_ja03f")
 skeleton = NodePath("")
 
+<<<<<<< HEAD:Scenes/Minigames/miniminigolf/miniminigolf.tscn
 [node name="pyramid" type="MeshInstance3D" parent="blockbench_export2/Node"]
 transform = Transform3D(0, -1, -1.42109e-14, 1, 0, 0, 0, -1.42109e-14, 1, 0.18125, 0.14244, 0.28125)
 mesh = SubResource("ArrayMesh_jlo24")
+=======
+[node name="pyramid" type="MeshInstance3D" parent="blockbench_export/Node/AnimationPlayer"]
+transform = Transform3D(5.42999e-05, 15, -3.80277e-05, 15, -5.42999e-05, 0, -1.3766e-10, -3.80277e-05, -15, -2.719, 0.218, -4.219)
+mesh = SubResource("ArrayMesh_7clab")
+>>>>>>> 00382671bc5af1b55232f715e4c658d4044d0879:Scenes/Minigames/Minigolf/MGMinigolf.tscn
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="blockbench_export2/Node"]

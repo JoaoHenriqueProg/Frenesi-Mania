@@ -1,6 +1,6 @@
 extends Camera3D
 
-@onready var bola = $".."
+@onready var bola = $"../bola"
 
 const ray_l = 1000
 var mouse_pos : Vector2
