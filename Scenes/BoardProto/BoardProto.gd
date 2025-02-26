@@ -12,8 +12,10 @@ var board_state = BoardState.WaitingPlayerJump
 var cur_player = 0
 var camera_offset
 
+@onready var players = $Players.get_children()
+
 func _ready() -> void:
-	camera_offset = $"Players/Player 1".position - $Camera3D.position
+	camera_offset = players[0].position - $Camera3D.position
 
 func change_state(new_state):
 	board_state = new_state
@@ -66,12 +68,13 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("DEBUG 1"):
 		Globals.start_rand_minigame()
 	
-	$Camera3D.position = get_node("Players").get_children()[cur_player].position - camera_offset
+	$Camera3D.position = players[cur_player].position - camera_offset
 	
 	if board_state == BoardState.WaitingPlayerJump:
+		micro_adjust_players_pos()
 		rotate_dice()
 		if Input.is_action_just_pressed("jump"):
-			get_node("Players").get_children()[cur_player].jump()
+			players[cur_player].jump()
 			
 			# TODO: isso aqui é muito cagado
 			var timer1 = get_tree().create_timer(0.25)
@@ -92,7 +95,7 @@ var player_logic_positions = [0, 0, 0, 0]
 var player_cur_positions = [0, 0, 0, 0]
 
 func move_player_to_next_position(player):
-	var cur_player = $Players.get_children()[player]
+	var cur_player = players[player]
 	var player_world_pos := Vector2(cur_player.global_position.x, cur_player.global_position.z)
 	var next_step = (player_cur_positions[player] + 1) % 18
 	var next_step_world_pos := Vector2($Steps.get_children()[next_step].global_position.x, 
@@ -109,6 +112,22 @@ func move_player_to_next_position(player):
 		player_cur_positions[player] += 1
 		print($Steps.get_child_count())
 		player_cur_positions[player] %= $Steps.get_child_count()
+
+func micro_adjust_players_pos():
+	for i in range(4):
+		var position_in_step = 0
+		for j in range(i):
+			if player_logic_positions[i] == player_logic_positions[j]:
+				position_in_step += 1
+		
+		var desired_pos = $Steps.get_children()[player_logic_positions[i]].position
+		desired_pos.x += position_in_step * 2
+		
+		players[i].position = Vector3(
+			lerp(players[i].position.x, desired_pos.x, 0.1),
+			lerp(players[i].position.y, desired_pos.y, 0.1),
+			lerp(players[i].position.z, desired_pos.z, 0.1)
+		)
 
 func are_players_in_postion():
 	return player_cur_positions == player_logic_positions

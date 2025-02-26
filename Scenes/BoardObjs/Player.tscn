@@ -3,6 +3,21 @@
 [ext_resource type="Script" path="res://Scenes/BoardObjs/Player.gd" id="1_43i4b"]
 [ext_resource type="PackedScene" uid="uid://bmwuark7fedu8" path="res://Obj/Players/Lele/Models/lele.gltf" id="1_edxhq"]
 
+[sub_resource type="Animation" id="Animation_g6mvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_a54ev"]
 resource_name = "jumo"
 length = 0.5
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.5), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_g6mvw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("blockbench_export:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w70c3"]
