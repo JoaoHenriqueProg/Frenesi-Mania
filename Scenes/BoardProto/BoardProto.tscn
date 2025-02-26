@@ -153,3 +153,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.916586, -0.160209, -0.366337, 0.399838, 0.367262, 0.839791, 1.08038e-08, -0.916216, 0.400685, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Gui" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="Gui"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Gui/Control"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 275.0
+offset_right = 941.0
+offset_bottom = 376.0
+
+[node name="Label" type="Label" parent="Gui/Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 271.0
+offset_top = 283.0
+offset_right = 311.0
+offset_bottom = 306.0
+scale = Vector2(3.64, 3.64)
+text = "JOJO"

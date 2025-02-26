@@ -6,6 +6,7 @@ enum BoardState {
 	WaitingPlayerJump,
 	ChoseNumber,
 	PlayerWalkingToPos,
+	GoToMinigame,
 }
 var board_state = BoardState.WaitingPlayerJump
 
@@ -14,12 +15,24 @@ var camera_offset
 
 @onready var players = $Players.get_children()
 
+var rng = RandomNumberGenerator.new()
+var cur_mg
+
 func _ready() -> void:
 	camera_offset = players[0].position - $Camera3D.position
+
+var randomizing_mg = true # todo: coco
 
 func change_state(new_state):
 	board_state = new_state
 	
+	if new_state == BoardState.GoToMinigame:
+		$Gui.show()
+		# todo: mais coco
+		var timer1 = get_tree().create_timer(1)
+		timer1.connect("timeout", func (): randomizing_mg = false)
+		var timer2 = get_tree().create_timer(2)
+		timer2.connect("timeout", func (): go_to_mg())
 	if new_state == BoardState.ChoseNumber:
 		var more_steps = rand_dice()
 		
@@ -28,7 +41,6 @@ func change_state(new_state):
 
 func rand_dice() -> int:
 	var nums = [1, 2, 3, 4, 5, 6]
-	var rng = RandomNumberGenerator.new()
 	var num = nums[rng.randi() % nums.size()]
 	if num == 1:
 		$Dado.rotation.x = 0
@@ -70,6 +82,10 @@ func _process(delta: float) -> void:
 	
 	$Camera3D.position = players[cur_player].position - camera_offset
 	
+	if randomizing_mg:
+		cur_mg = Globals.minigames[rng.randi() % Globals.minigames.size()]
+		$Gui/Control/Label.text = cur_mg.mg_name
+	
 	if board_state == BoardState.WaitingPlayerJump:
 		micro_adjust_players_pos()
 		rotate_dice()
@@ -85,9 +101,11 @@ func _process(delta: float) -> void:
 		if !are_players_in_postion():
 			move_player_to_next_position(cur_player)
 		else:
-			cur_player += 1
-			cur_player %= 4
-			change_state(BoardState.WaitingPlayerJump)
+			if cur_player != 3:
+				cur_player += 1
+				change_state(BoardState.WaitingPlayerJump)
+			else:
+				change_state(BoardState.GoToMinigame)
 
 # ÁREA DA MOVIMENTACÃO
 
@@ -110,7 +128,6 @@ func move_player_to_next_position(player):
 		# cur_player.position.x = $Steps.get_children()[player_cur_positions[player] + 1].position.x
 		# cur_player.position.z = $Steps.get_children()[player_cur_positions[player] + 1].position.z
 		player_cur_positions[player] += 1
-		print($Steps.get_child_count())
 		player_cur_positions[player] %= $Steps.get_child_count()
 
 func micro_adjust_players_pos():
@@ -131,3 +148,7 @@ func micro_adjust_players_pos():
 
 func are_players_in_postion():
 	return player_cur_positions == player_logic_positions
+
+# todo: mais coco ainda
+func go_to_mg():
+	Globals.start_minigame(cur_mg.mg_name)
