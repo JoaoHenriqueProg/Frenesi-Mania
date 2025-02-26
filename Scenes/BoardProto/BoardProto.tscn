@@ -1,22 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://diudj0larf8no"]
+[gd_scene load_steps=11 format=3 uid="uid://diudj0larf8no"]
 
 [ext_resource type="Script" path="res://Scenes/BoardProto/BoardProto.gd" id="1_67sv3"]
-[ext_resource type="PackedScene" uid="uid://bmwuark7fedu8" path="res://Obj/Players/Lele/Models/lele.gltf" id="2_gy066"]
+[ext_resource type="PackedScene" uid="uid://c5fdhalioece3" path="res://Scenes/BoardObjs/Player.tscn" id="2_lfr3x"]
 [ext_resource type="Texture2D" uid="uid://iahbiiwo3tft" path="res://Scenes/BoardProto/Step.png" id="3_olr5s"]
 [ext_resource type="PackedScene" uid="uid://cn7fl47mw6gvg" path="res://Scenes/BoardProto/Dice.glb" id="3_tcstq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_lywtq"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ghysp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8tpo"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hqe1"]
-albedo_color = Color(0.984314, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvegc"]
-albedo_color = Color(0.615686, 0, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htie0"]
 transparency = 1
@@ -27,25 +16,13 @@ albedo_texture = ExtResource("3_olr5s")
 [sub_resource type="Animation" id="Animation_rupuw"]
 resource_name = "Player1Jump"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Players/Player 1:position")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1, 0), Vector3(0, 2, 0), Vector3(0, 1, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.266667, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -55,6 +32,18 @@ tracks/1/keys = {
 "args": [2],
 "method": &"change_state"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Players/Player 1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 1.78367, 0), Vector3(0, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fds3j"]
@@ -91,30 +80,16 @@ transform = Transform3D(1, 0, 0, 0, 0.924493, 0.381199, 0, -0.381199, 0.924493, 
 
 [node name="Players" type="Node3D" parent="."]
 
-[node name="Player 1" type="MeshInstance3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 1, 0)
-mesh = SubResource("BoxMesh_ghysp")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_g8tpo")
+[node name="Player 1" parent="Players" instance=ExtResource("2_lfr3x")]
 
-[node name="Player 2" type="MeshInstance3D" parent="Players"]
+[node name="Player 2" parent="Players" instance=ExtResource("2_lfr3x")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 2, 1, 0)
-skeleton = NodePath("../../..")
 
-[node name="blockbench_export" parent="Players/Player 2" instance=ExtResource("2_gy066")]
-transform = Transform3D(-5, -2.9138e-07, -2.18557e-07, 2.18557e-07, 6.36831e-15, -5, 4.37114e-07, -3.333, 9.55343e-15, 0.0164862, 4.24875e-08, 0.486)
-
-[node name="Player 3" type="MeshInstance3D" parent="Players"]
+[node name="Player 3" parent="Players" instance=ExtResource("2_lfr3x")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 4, 1, 0)
-mesh = SubResource("BoxMesh_ghysp")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4hqe1")
 
-[node name="Player 4" type="MeshInstance3D" parent="Players"]
+[node name="Player 4" parent="Players" instance=ExtResource("2_lfr3x")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 6, 1, 0)
-mesh = SubResource("BoxMesh_ghysp")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_dvegc")
 
 [node name="Steps" type="Node3D" parent="."]
 
@@ -227,7 +202,7 @@ mesh = SubResource("QuadMesh_bugr6")
 skeleton = NodePath("../..")
 
 [node name="Dado" parent="." instance=ExtResource("3_tcstq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.916586, -0.160209, -0.366337, 0.399838, 0.367262, 0.839791, 1.08038e-08, -0.916216, 0.400685, 0, 0, 0)
