@@ -8,16 +8,10 @@ var state = States.InMainGame
 
 func _process(delta: float) -> void:
 	# SÓ PRA DEBUG, TIRAR DEPOIS
-	if state == States.InMiniGame:
+	# Inentrável 
+	if state == States.InMiniGame and false:
 		if Input.is_action_just_pressed("DEBUG 1"):
-			get_parent().get_node("MiniGame").queue_free()
-			get_parent().get_node("MainGame").set_process(true)
-			get_parent().get_node("MainGame").visible = true
-			
-			# TODO: esse aqui não dura nem mais dois dias sem quebrar o jogo todo
-			get_parent().get_node("MainGame/Players/Player 1/Camera3D").current = true
-			
-			state = States.InMainGame
+			return_to_board()
 
 var minigames = [
 	{
@@ -41,7 +35,7 @@ func start_rand_minigame():
 	get_parent().get_node("MainGame").set_process(false)
 	get_parent().get_node("MainGame").visible = false
 	get_parent().get_node("MainGame/Gui").visible = false
-	var mg_node = new_mg.instantiate()
+	var mg_node = new_mg.packed_scene.instantiate()
 	get_parent().add_child(mg_node)
 	
 	state = States.InMiniGame
@@ -54,3 +48,23 @@ func start_minigame(mg_name):
 			get_parent().get_node("MainGame/Gui").visible = false
 			var mg_node = mg.packed_scene.instantiate()
 			get_parent().add_child(mg_node)
+			
+			state = States.InMiniGame
+
+var player_scores := [0, 0, 0, 0]
+
+func modify_player_scores(modifiers: Array[int]):
+	assert(modifiers.size() == 4)
+	
+	for i in range(4):
+		player_scores[i] += modifiers[i]
+
+func return_to_board():
+	get_parent().get_node("MiniGame").queue_free()
+	get_parent().get_node("MainGame").set_process(true)
+	get_parent().get_node("MainGame").visible = true
+	
+	# TODO: esse aqui não dura nem mais dois dias sem quebrar o jogo todo
+	get_parent().get_node("MainGame/Camera3D").current = true
+	
+	state = States.InMainGame
