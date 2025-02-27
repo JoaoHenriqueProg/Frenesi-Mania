@@ -1,13 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfvinrtss6jwg"]
+[gd_scene load_steps=23 format=3 uid="uid://bfvinrtss6jwg"]
 
 [ext_resource type="Texture2D" uid="uid://0y03yp22uv8b" path="res://Obj/caveordie/pixelart/miner_hit.png" id="1_6ftib"]
 [ext_resource type="Texture2D" uid="uid://cec7u4whed4hs" path="res://Obj/caveordie/pixelart/miner_idle.png" id="1_7sf14"]
 [ext_resource type="Texture2D" uid="uid://bnocy0kytsqcs" path="res://Obj/caveordie/pixelart/miner_jump.png" id="3_sitk1"]
 [ext_resource type="Texture2D" uid="uid://d2iftpx8o4clp" path="res://Obj/caveordie/pixelart/miner_walk.png" id="4_umufy"]
+[ext_resource type="Texture2D" uid="uid://d0x0lcvvqwhg3" path="res://Obj/caveordie/pixelart/picarreta.png" id="5_ireoo"]
+[ext_resource type="Script" path="res://Obj/caveordie/obj/hand.gd" id="6_lxux2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k3l4p"]
 radius = 6.0
-height = 16.0
+height = 14.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuo8o"]
 atlas = ExtResource("1_6ftib")
@@ -123,6 +125,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jkq2"]
+radius = 3.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -132,3 +137,16 @@ shape = SubResource("CapsuleShape2D_k3l4p")
 sprite_frames = SubResource("SpriteFrames_4hycw")
 animation = &"jump"
 autoplay = "idle"
+
+[node name="hand" type="Node2D" parent="."]
+
+[node name="spr_hand" type="Sprite2D" parent="hand"]
+texture = ExtResource("5_ireoo")
+
+[node name="Area2D" type="Area2D" parent="hand/spr_hand"]
+script = ExtResource("6_lxux2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand/spr_hand/Area2D"]
+shape = SubResource("CircleShape2D_3jkq2")
+
+[connection signal="body_entered" from="hand/spr_hand/Area2D" to="hand/spr_hand/Area2D" method="_on_body_entered"]
