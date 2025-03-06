@@ -12,8 +12,13 @@ func _ready() -> void:
 	assert(player_controller < 4)
 
 var dash_timer = 0
+var max_dash_timer = 2
 
 func _physics_process(delta: float) -> void:
+	dash_timer -= delta
+	dash_timer = max(dash_timer, 0.0)
+	$DashCD.value = dash_timer / max_dash_timer * 100.0
+	
 	global_delta = delta
 	if player_controller == 0:
 		# TODO: checar se o controle está conectado
@@ -34,7 +39,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-		if is_dashing: velocity.x *= 7.5
+		if is_dashing and velocity.x != 0: 
+			velocity.x *= 7.5
+			dash_timer = max_dash_timer
 	else:
 		apply_gravity()
 		# TODO: ia
